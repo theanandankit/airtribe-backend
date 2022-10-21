@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize("airtribe", "root", "root", {
     dialect: "mysql",
-    host: "localhost",
+    host: "mysql-airtribe",
 });
 
 sequelize.sync({force: true}).then((result) => {
