@@ -13,14 +13,14 @@ route.post("/add", (req, res) => {
             });
         } else 
             res.status(400).send({
-                message: 'Something went wrrong'
+                message: 'Something went wrong'
             }); 
 
     }).catch(err => {
 
         console.log(err);
         res.status(500).send({
-            message: 'Something went wrrong'
+            message: 'Something went wrong'
         }); 
     })
 });

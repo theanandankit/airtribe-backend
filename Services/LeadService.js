@@ -56,14 +56,21 @@ let searchLeadByEmailName = async (value) => {
 
         let result;
         let nameSearch = value.name;
-        let emailSearch = value.email; 
+        let emailSearch = value.email;
+
+        let searchValue = [];
+
+        if (nameSearch) {
+            searchValue.push({ '$learner.name$': {[Op.like]: '%' + nameSearch + '%'}});
+        }
+
+        if (emailSearch) {
+            searchValue.push({ '$learner.email$': {[Op.like]: '%' + emailSearch + '%'}});
+        }
     
         lead.findAll({
             where : {
-                [Op.or]: [
-                    { '$learner.name$': {[Op.like]: '%' + nameSearch + '%'}},
-                    { '$learner.email$': {[Op.like]: '%' + emailSearch + '%'}},
-                ]
+                [Op.or]: searchValue,
             },
             include: [
                 {
@@ -81,7 +88,15 @@ let searchLeadByEmailName = async (value) => {
     
             let jsonString = JSON.stringify(data);
             result = JSON.parse(jsonString);
-            resolve(result);
+
+            let value = [];
+
+            result.forEach((i => {
+                if (i.id)
+                    value.push(i);
+            }))
+
+            resolve(value);
     
         }).catch (err=> {
             console.log(err);

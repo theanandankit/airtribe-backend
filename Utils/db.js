@@ -26,8 +26,7 @@ const db_relation_int = (sequelize) => {
     learner.belongsToMany(course, {through: 'course_learner'});
 
     learner.hasMany(lead, {foreignKey: 'learner_id'});
-    lead.belongsTo(learner, {foreignKey: 'learner_id'});;
-
+    lead.belongsTo(learner, {foreignKey: 'learner_id'});
 }
 
 module.exports = {
