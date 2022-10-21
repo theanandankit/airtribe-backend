@@ -39,9 +39,9 @@ let updateCourse = async (value) => {
         if (value.instructorId != undefined)
             data.instructor_id = value.instructorId; 
 
-        await course.update(data,{ where: {
-            id: value.id
-        }});
+        console.log("------------------", data) 
+
+        await data.save(); 
     } catch (err) {
         console.log(err);; 
     }

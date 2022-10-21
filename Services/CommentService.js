@@ -5,8 +5,8 @@ let addComment = async (value) => {
 
     try {
         data = await comment.create({
-            comment_value = value.value,
-            lead_id = value.leadId,
+            comment_value: value.value,
+            lead_id: value.leadId,
 
         })
     } catch (err) {

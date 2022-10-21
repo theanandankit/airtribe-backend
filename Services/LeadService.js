@@ -1,4 +1,7 @@
 const lead = require('../Models/Lead');
+const learner = require('../Models/Learner');
+const sequelize = require("sequelize");
+const Op = sequelize.Op;
 
 let addLead = async (value) => {
     let data;
@@ -24,18 +27,16 @@ let updateLead = async (value) => {
     let result;
 
     try {
-        data = await lead.findone({where: {
+        data = await lead.findOne({where: {
             id: value.id
         }});
 
         if (value.status != undefined)
             data.status = value.status;
 
-        result = await lead.update(data, {where: {
-            id: value.id
-        }});
+        await data.save(); 
     } catch (err) {
-        condole.log(err);
+        console.log(err);
         return null;
     }
 
@@ -45,7 +46,47 @@ let updateLead = async (value) => {
     return result; 
 }
 
+let searchLeadByEmailName = async (value) => {
+    
+    return new Promise((resolve, reject)=>{
+
+        let result;
+        let nameSearch = value.name;
+        let emailSearch = value.email; 
+    
+        lead.findAll({
+            where : {
+                [Op.or]: [
+                    { '$learner.name$': {[Op.like]: '%' + nameSearch + '%'}},
+                    { '$learner.email$': {[Op.like]: '%' + emailSearch + '%'}},
+                ]
+            },
+            include: [
+                {
+                    model: learner,
+                    as: 'learner',
+                    required: false,
+                    right: true
+                }
+            ],
+            raw: true,
+            nest: true,
+        }).then( data => {
+    
+            let jsonString = JSON.stringify(data);
+            result = JSON.parse(jsonString);
+            resolve(result);
+    
+        }).catch (err=> {
+            console.log(err);
+            reject(null)
+        })
+
+    })
+}
+
 module.exports = {
     addLead,
-    updateLead
+    updateLead,
+    searchLeadByEmailName
 }

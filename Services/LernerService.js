@@ -12,16 +12,16 @@ let addLearner = async (value) => {
             designation: value.designation,
             email: value.email,
             phone: value.email,
-            linkedIn_Profile: value.linkedIn_Profile,
+            linkedIn_Profile: value.linkedInProfile,
         })
 
         if (data == null || data == undefined)
             return null;
 
         update = await course_learner.create({
-            course_id = value.courseId,
-            learner_id = value.data.id,
-        })
+            course_id: value.courseId,
+            learner_id: data.id,
+        });
 
     } catch (err) {
         console.log(err);

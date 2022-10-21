@@ -22,4 +22,4 @@ let addInstructor = async (value) => {
     return data;
 }
 
-module.exports = addInstructor;
+module.exports = {addInstructor};
