@@ -1,33 +1,42 @@
 const course = require('../Models/Course');
 
 var addCourse = async (value) => { 
-    let data;
-    try {
-        data = await course.create({
+
+    return new Promise((resolve, reject) => {
+
+        course.create({
+            
             name: value.name,
             max_seat: value.maxSeat,
             start_date: value.startDate,
             description: value.description,
             instructor_id: value.instructorId,
-        });
-    } catch (err) {
-        console.log(err);
-    }
 
-    if (data == null)
-        return null;
-    
-    return data; 
+        }).then(data => {
+            
+            if (data)
+                resolve(data);
+            else 
+                reject(null);
+
+        }).catch(err => {
+
+            console.log(err);;
+            reject(null);
+
+        })
+    })
 }
 
 let updateCourse = async (value) => {
-    let data;
-    try {
-        data = await course.findOne({
+
+    return new Promise((resolve, reject) => {
+        
+        course.findOne({
             where: 
                 {id: value.id}
-        });
-
+        }).then( data => {
+        
         if (value.name != undefined)
             data.name = value.name;
         if (value.maxSeat != undefined)
@@ -39,12 +48,14 @@ let updateCourse = async (value) => {
         if (value.instructorId != undefined)
             data.instructor_id = value.instructorId; 
 
-        console.log("------------------", data) 
+        data.save(); 
+        resolve(data);
 
-        await data.save(); 
-    } catch (err) {
-        console.log(err);; 
-    }
+        }).catch(err => {
+            console.log(err);
+            reject(null);;
+        })
+    })
 }
 
 module.exports = {

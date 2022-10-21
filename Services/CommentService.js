@@ -1,23 +1,27 @@
 const comment = require('../Models/Comment');
 
 let addComment = async (value) => {
-    let data;
 
-    try {
-        data = await comment.create({
+    return new Promise((resolve, reject) => {
+
+        comment.create({
+
             comment_value: value.value,
             lead_id: value.leadId,
 
+        }).then(data => {
+            
+            if (data)
+                resolve(data);
+            else
+                reject(null);;
+        }).catch(err => {
+            
+            console.log(err)
+            reject(null);
+            
         })
-    } catch (err) {
-        console.log(err)
-        return null;
-    }
-
-    if (data == null || data == undefined)
-        return null;
-
-    return data;
+    })
 }
 
 module.exports = {addComment}; 

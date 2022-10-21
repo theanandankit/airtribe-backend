@@ -4,50 +4,54 @@ const sequelize = require("sequelize");
 const Op = sequelize.Op;
 
 let addLead = async (value) => {
-    let data;
-    try {
-        data = await lead.create({
+
+    return new Promise((resolve, reject) => {
+
+        lead.create({
+
             status: value.status,
             course_id: value.courseId,
-            learner_id: value.learnerId, 
-        })
-    } catch (err) {
-        console.log(err);
-        return null;
-    }
+            learner_id: value.learnerId,
 
-    if (data == null || data == undefined)
-        return null;
-
-    return data; 
+        }).then(data => {
+            
+            if (data)
+                resolve(data);
+            else
+                reject(null);
+        }).catch ((err => {
+            
+            console.log(err);;;
+            reject(null);
+        
+        }))
+    })
 }
 
 let updateLead = async (value) => {
-    let data;
-    let result;
 
-    try {
-        data = await lead.findOne({where: {
-            id: value.id
-        }});
-
+    return new Promise((resolve, reject) => {
+        lead.findOne({
+            where: {
+                id: value.id
+            }
+        }).then( data => {
+        
         if (value.status != undefined)
             data.status = value.status;
 
-        await data.save(); 
-    } catch (err) {
-        console.log(err);
-        return null;
-    }
+        data.save();
+        resolve(data);
 
-    if (result == null || result == undefined)
-        return null;
-
-    return result; 
+        })
+    }).catch(err => {
+        console.log(err);;
+        reject(null);
+    })
 }
 
 let searchLeadByEmailName = async (value) => {
-    
+
     return new Promise((resolve, reject)=>{
 
         let result;
@@ -69,8 +73,10 @@ let searchLeadByEmailName = async (value) => {
                     right: true
                 }
             ],
+
             raw: true,
             nest: true,
+
         }).then( data => {
     
             let jsonString = JSON.stringify(data);
