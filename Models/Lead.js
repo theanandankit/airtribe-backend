@@ -13,10 +13,16 @@ const lead = sequelize.define("lead", {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+
     course_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+    
+    learner_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false, 
+    }
 });
 
 module.exports = lead;;

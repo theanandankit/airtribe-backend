@@ -9,11 +9,7 @@ const comment = sequelize.define("comment", {
         primaryKey: true,
     },
 
-    value: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    date_created: {
+    comment_value: {
         type: Sequelize.STRING,
         allowNull: false,
     },

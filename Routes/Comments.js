@@ -1,8 +1,17 @@
 const express = require("express");
 const route = express.Router();
 
+const commentService = require('../Services/CommentService');
+
 route.get("/add", (req, res) => {
-    res.send("create"); 
+    
+    let data = commentService.addComment(req.body);
+
+    if (data != null) {
+        res.status(200).json({message: 'Comment has been Successfully added'});
+    } else 
+        res.status(400).send({message: 'Something went wrrong'});
+
 });
 
 module.exports = route; 

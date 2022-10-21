@@ -13,22 +13,27 @@ const learner = sequelize.define("learner", {
         type: Sequelize.STRING,
         allowNull: false,
     },
+
     institute: {
         type: Sequelize.STRING,
         allowNull: false,
     },
+
     designation: {
         type: Sequelize.STRING,
         allowNull: false,
     },
+
     email: {
         type: Sequelize.STRING,
         allowNull: false,
     },
+
     phone: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+    
     linkedIn_Profile: {
         type: Sequelize.STRING,
         allowNull: false,

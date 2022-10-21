@@ -49,4 +49,5 @@ let updateCourse = async (value) => {
 
 module.exports = {
     addCourse,
+    updateCourse
 }
