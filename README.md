@@ -51,8 +51,8 @@ How to Setup the project
 
 PROJECT STRUCTURE
 -------
-This is the overview of the project structure
-<img src="images/structure.png">
+This is the overview of the Database Schema
+<img src="images/schema.png">
 
 PROJECT FLOWS
 ------
