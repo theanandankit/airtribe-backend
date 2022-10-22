@@ -58,20 +58,20 @@ PROJECT FLOWS
 ------
 1. First, insert the initial data by calling the a GET API (as shown below). Init Data https://github.com/theanandankit/airtribe-backend/blob/master/Utils/InitialData.js  
 2. Add New instructor (EndPoint: localhost:3000/instructor/add)
-    <img src=“images/ins_add.png”>
+    <img src=images/ins_add.png>
 3. Add New Course (EndPoint: localhost:3000/course/create)
-    <img src=“images/cou_add.png”>
+    <img src=images/cou_add.png>
 4. Update Course Detail (EndPoint: localhost:3000/course/update)
-    <img src=“images/cou_up.png”>
+    <img src=images/cou_up.png>
 5. Add New Learner (EndPoint: localhost:3000/learner/add)
-    <img src=“images/lea_add.png”>
+    <img src=images/lea_add.png>
 6. Add New Lead (EndPoint: localhost:3000/lead/add)
-    <img src=“images/lead_add.png”>
+    <img src=images/lead_add.png>
 7. Update Lead (EndPoint: localhost:3000/lead/update)
-    <img src=“images/lead_up.png”>
+    <img src=images/lead_up.png>
 8. Add New Comment (EndPoint: localhost:3000/comment/add)
-    <img src=“images/com_add.png”>
+    <img src=images/com_add.png>
 9. Search API (EndPoint: localhost:3000/lead/search)
-    <img src=“images/search.png”>
+    <img src=images/search.png>
 
     
