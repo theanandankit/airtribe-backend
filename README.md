@@ -1,10 +1,10 @@
-AirTribe ASSIGNMENT
+AirTribe Assignment
 ============
-This repository contains the code and Dockerized setup of ARITRIBE-BACKEND Assignment.
+This repository contains the code and dockerized setup of ARITRIBE-BACKEND Assignment.
 
 About the Project
 -----------
-My task was to build a backend which capable of storing course related data i.e. Course, Learner, Instructor details. Also I have to create search functionality for the stored data. At last I have to dockerize the complete project keeping in mind that my backend should be scalable and optimal.
+My task was to build a backend which capable of storing course related data like Course, Learner, Instructor details. Also I have to create search functionality for the stored data. At last I have to dockerize the complete project keeping in mind that my backend should be scalable and optimal.
 
 TechStack Used
 ------
@@ -74,4 +74,8 @@ PROJECT FLOWS
 9. Search API (EndPoint: localhost:3000/lead/search)
     <img src=images/search.png>
 
-    
+Future Scope
+------
+* Add API Validator.
+* Additional rules for registration.
+* Live tracking of enrolled learners. 
